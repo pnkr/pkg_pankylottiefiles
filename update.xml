@@ -6,11 +6,11 @@
 		<element>pkg_pankylottie</element>
 		<type>package</type>
 		<version>2.0.0</version>
-		<infourl title="Panky Lottie Files">https://github.com/pnkr/mod_pankylottiefiles/releases/tag/v2.0.0</infourl>
+		<infourl title="Panky Lottie Files">https://github.com/pnkr/pkg_pankylottiefiles/releases/tag/v2.0.0</infourl>
 		<downloads>
-			<downloadurl type="full" format="zip">https://github.com/pnkr/mod_pankylottiefiles/releases/download/v2.0.0/pkg_pankylottie-2.0.0.zip</downloadurl>
+			<downloadurl type="full" format="zip">https://github.com/pnkr/pkg_pankylottiefiles/releases/download/v2.0.0/pkg_pankylottie-2.0.0.zip</downloadurl>
 		</downloads>
-		<sha512>90f5970e1980ed5fdf16950fc18b719150eacabf8bd867c6db3145666d649ae715a3bbaa9de37b7d779fd3426f3d4e179d13b6daea96e08ad78b207616fa245d</sha512>
+		<sha512>cdf363142cf15459a370ee0e91faed43a231abe3258a1491be6e9e75010e6d790eb905c0a5a98b0a6f720f0f69e635bbbebe6e5a79223ca7224c2be31267bbfe</sha512>
 		<tags>
 			<tag>stable</tag>
 		</tags>
