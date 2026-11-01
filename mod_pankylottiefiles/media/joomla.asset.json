@@ -1,0 +1,52 @@
+{
+    "$schema": "https://developer.joomla.org/schemas/json-schema/web_assets.json",
+    "name": "mod_pankylottiefiles",
+    "version": "2.0.0",
+    "description": "Web assets of the Panky Lottie Files package.",
+    "license": "GPL-2.0-or-later",
+    "assets": [
+        {
+            "name": "mod_pankylottiefiles.player",
+            "type": "style",
+            "uri": "mod_pankylottiefiles/pankylottie.css",
+            "version": "auto"
+        },
+        {
+            "name": "mod_pankylottiefiles.player",
+            "type": "script",
+            "uri": "mod_pankylottiefiles/pankylottie.js",
+            "version": "auto",
+            "attributes": {
+                "type": "module"
+            }
+        },
+        {
+            "name": "mod_pankylottiefiles.preview",
+            "type": "style",
+            "uri": "mod_pankylottiefiles/pankylottie-preview.css",
+            "version": "auto"
+        },
+        {
+            "name": "mod_pankylottiefiles.preview",
+            "type": "script",
+            "uri": "mod_pankylottiefiles/pankylottie-preview.js",
+            "version": "auto",
+            "attributes": {
+                "type": "module"
+            }
+        },
+        {
+            "name": "editor-button.pankylottie",
+            "type": "script",
+            "uri": "mod_pankylottiefiles/pankylottie-editor-button.js",
+            "version": "auto",
+            "attributes": {
+                "type": "module"
+            },
+            "dependencies": [
+                "editors",
+                "joomla.dialog"
+            ]
+        }
+    ]
+}

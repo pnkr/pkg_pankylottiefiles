@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="package" method="upgrade">
+	<name>PKG_PANKYLOTTIE</name>
+	<packagename>pankylottie</packagename>
+	<author>Panayiotis Kiriakopoulos</author>
+	<creationDate>2026-10</creationDate>
+	<copyright>(C) 2022 Panayiotis Kiriakopoulos.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>kiriakopoulos_p@hotmail.com</authorEmail>
+	<authorUrl>https://github.com/pnkr</authorUrl>
+	<packager>Panayiotis Kiriakopoulos</packager>
+	<packagerurl>https://github.com/pnkr</packagerurl>
+	<version>2.0.0</version>
+	<description>PKG_PANKYLOTTIE_XML_DESCRIPTION</description>
+	<scriptfile>script.php</scriptfile>
+	<blockChildUninstall>true</blockChildUninstall>
+
+	<!-- The module goes first: the plugins use its helper, layout and media -->
+	<files>
+		<file type="module" id="mod_pankylottiefiles" client="site">mod_pankylottiefiles</file>
+		<file type="plugin" id="pankylottie" group="content">plg_content_pankylottie</file>
+		<file type="plugin" id="pankylottie" group="editors-xtd">plg_editors-xtd_pankylottie</file>
+	</files>
+
+	<languages folder="language">
+		<language tag="en-GB">en-GB/pkg_pankylottie.sys.ini</language>
+		<language tag="el-GR">el-GR/pkg_pankylottie.sys.ini</language>
+	</languages>
+
+	<updateservers>
+		<server type="extension" name="Panky Lottie Files">https://raw.githubusercontent.com/pnkr/mod_pankylottiefiles/master/update.xml</server>
+	</updateservers>
+</extension>

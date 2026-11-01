@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" group="editors-xtd" method="upgrade">
+	<name>plg_editors-xtd_pankylottie</name>
+	<author>Panayiotis Kiriakopoulos</author>
+	<creationDate>2026-10</creationDate>
+	<copyright>(C) 2022 Panayiotis Kiriakopoulos.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>kiriakopoulos_p@hotmail.com</authorEmail>
+	<authorUrl>https://github.com/pnkr</authorUrl>
+	<version>2.0.0</version>
+	<description>PLG_EDITORS-XTD_PANKYLOTTIE_XML_DESCRIPTION</description>
+	<namespace path="src">Pnkr\Plugin\EditorsXtd\PankyLottie</namespace>
+
+	<files>
+		<folder plugin="pankylottie">services</folder>
+		<folder>language</folder>
+		<folder>src</folder>
+	</files>
+</extension>

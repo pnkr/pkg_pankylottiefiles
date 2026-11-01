@@ -1,0 +1,148 @@
+/**
+ * @package     Joomla.Site
+ * @subpackage  mod_pankylottiefiles
+ *
+ * @copyright   (C) 2022 Panayiotis Kiriakopoulos. <https://github.com/pnkr>
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
+
+/* Single animation */
+.pankylottie {
+  position: relative;
+  display: inline-block;
+  inline-size: var(--pankylottie-width, 300px);
+  max-inline-size: 100%;
+  vertical-align: top;
+}
+
+.pankylottie__stage {
+  display: block;
+  inline-size: 100%;
+  block-size: var(--pankylottie-height, 300px);
+  padding: 0;
+  margin: 0;
+  color: inherit;
+  font: inherit;
+  text-decoration: none;
+  background: none;
+  border: 0;
+}
+
+.pankylottie--ratio .pankylottie__stage {
+  block-size: auto;
+  aspect-ratio: var(--pankylottie-ratio);
+}
+
+button.pankylottie__stage {
+  cursor: pointer;
+}
+
+.pankylottie__stage:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.pankylottie__player {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+/* Play / pause control */
+.pankylottie__toggle {
+  position: absolute;
+  inset-block-end: .5rem;
+  inset-inline-end: .5rem;
+  display: grid;
+  place-items: center;
+  inline-size: 2.25rem;
+  block-size: 2.25rem;
+  padding: 0;
+  color: #fff;
+  cursor: pointer;
+  background: rgb(0 0 0 / .65);
+  border: 0;
+  border-radius: 50%;
+  opacity: .85;
+}
+
+.pankylottie__toggle:hover,
+.pankylottie__toggle:focus-visible {
+  opacity: 1;
+}
+
+.pankylottie__toggle:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px #000;
+}
+
+.pankylottie__toggle[hidden] {
+  display: none;
+}
+
+.pankylottie__toggle svg {
+  inline-size: 1rem;
+  block-size: 1rem;
+  fill: currentColor;
+}
+
+.pankylottie__icon-play,
+.pankylottie.is-paused .pankylottie__icon-pause {
+  display: none;
+}
+
+.pankylottie.is-paused .pankylottie__icon-play {
+  display: block;
+}
+
+/* Module containers */
+.mod-pankylottiefiles {
+  --pankylottie-columns: var(--pankylottie-columns-setting, 3);
+  --pankylottie-gap: 1rem;
+}
+
+.mod-pankylottiefiles__items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pankylottie-gap);
+  align-items: flex-start;
+}
+
+.mod-pankylottiefiles--grid .mod-pankylottiefiles__items {
+  display: grid;
+  grid-template-columns: repeat(var(--pankylottie-columns), minmax(0, 1fr));
+}
+
+.mod-pankylottiefiles--slider .mod-pankylottiefiles__items {
+  flex-direction: row;
+  padding-block-end: .5rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+}
+
+.mod-pankylottiefiles--grid .pankylottie,
+.mod-pankylottiefiles--slider .pankylottie {
+  inline-size: 100%;
+}
+
+.mod-pankylottiefiles--slider .pankylottie {
+  flex: 0 0 calc((100% - (var(--pankylottie-columns) - 1) * var(--pankylottie-gap)) / var(--pankylottie-columns));
+  scroll-snap-align: start;
+}
+
+.mod-pankylottiefiles--slider .mod-pankylottiefiles__items:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+@media (max-width: 575.98px) {
+  .mod-pankylottiefiles--grid.mod-pankylottiefiles--wide {
+    --pankylottie-columns: 2;
+  }
+
+  .mod-pankylottiefiles--slider {
+    --pankylottie-columns: 1.25;
+  }
+}

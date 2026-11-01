@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<updates>
+	<update>
+		<name>Panky Lottie Files</name>
+		<description>Panky Lottie Files 2.0.0</description>
+		<element>pkg_pankylottie</element>
+		<type>package</type>
+		<version>2.0.0</version>
+		<infourl title="Panky Lottie Files">https://github.com/pnkr/mod_pankylottiefiles/releases/tag/v2.0.0</infourl>
+		<downloads>
+			<downloadurl type="full" format="zip">https://github.com/pnkr/mod_pankylottiefiles/releases/download/v2.0.0/pkg_pankylottie-2.0.0.zip</downloadurl>
+		</downloads>
+		<sha512>90f5970e1980ed5fdf16950fc18b719150eacabf8bd867c6db3145666d649ae715a3bbaa9de37b7d779fd3426f3d4e179d13b6daea96e08ad78b207616fa245d</sha512>
+		<tags>
+			<tag>stable</tag>
+		</tags>
+		<maintainer>Panayiotis Kiriakopoulos</maintainer>
+		<maintainerurl>https://github.com/pnkr</maintainerurl>
+		<targetplatform name="joomla" version="6\.[0-9]+" />
+		<php_minimum>8.3</php_minimum>
+	</update>
+</updates>

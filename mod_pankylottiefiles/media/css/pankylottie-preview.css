@@ -1,0 +1,42 @@
+/**
+ * @package     Joomla.Administrator
+ * @subpackage  mod_pankylottiefiles
+ *
+ * @copyright   (C) 2022 Panayiotis Kiriakopoulos. <https://github.com/pnkr>
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
+
+.pankylottie-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-start;
+  min-block-size: 4rem;
+  padding: 1rem;
+  background:
+    repeating-conic-gradient(rgb(128 128 128 / .12) 0 25%, transparent 0 50%) 0 0 / 16px 16px;
+  border: 1px solid var(--template-bg-dark-10, rgb(128 128 128 / .3));
+  border-radius: .25rem;
+}
+
+.pankylottie-preview__item {
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+  max-inline-size: 100%;
+}
+
+.pankylottie-preview__item dotlottie-wc {
+  display: block;
+  inline-size: 100%;
+}
+
+.pankylottie-preview__caption {
+  font-size: .75rem;
+  opacity: .75;
+}
+
+.pankylottie-preview__empty {
+  margin: 0;
+  opacity: .75;
+}

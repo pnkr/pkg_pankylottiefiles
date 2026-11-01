@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" client="site" method="upgrade">
+	<name>mod_pankylottiefiles</name>
+	<author>Panayiotis Kiriakopoulos</author>
+	<creationDate>2026-10</creationDate>
+	<copyright>(C) 2022 Panayiotis Kiriakopoulos.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>kiriakopoulos_p@hotmail.com</authorEmail>
+	<authorUrl>https://github.com/pnkr</authorUrl>
+	<version>2.0.0</version>
+	<description>MOD_PANKYLOTTIEFILES_XML_DESCRIPTION</description>
+	<namespace path="src">Pnkr\Module\PankyLottieFiles</namespace>
+	<scriptfile>script.php</scriptfile>
+	<customContent />
+
+	<files>
+		<folder module="mod_pankylottiefiles">services</folder>
+		<folder>language</folder>
+		<folder>layouts</folder>
+		<folder>src</folder>
+		<folder>tmpl</folder>
+	</files>
+
+	<media folder="media" destination="mod_pankylottiefiles">
+		<folder>css</folder>
+		<folder>js</folder>
+		<filename>joomla.asset.json</filename>
+	</media>
+
+	<config>
+		<fields name="params">
+			<fieldset name="basic" addfieldprefix="Pnkr\Module\PankyLottieFiles\Site\Field">
+				<field
+					name="preview"
+					type="lottiepreview"
+					label="MOD_PANKYLOTTIEFILES_FIELD_PREVIEW_LABEL"
+				/>
+
+				<field
+					name="animations"
+					type="subform"
+					label="MOD_PANKYLOTTIEFILES_FIELD_ANIMATIONS_LABEL"
+					description="MOD_PANKYLOTTIEFILES_FIELD_ANIMATIONS_DESC"
+					layout="joomla.form.field.subform.repeatable"
+					multiple="true"
+					min="1"
+					max="24"
+					buttons="add,remove,move"
+					>
+					<form>
+						<field
+							name="source"
+							type="radio"
+							layout="joomla.form.field.radio.buttons"
+							label="MOD_PANKYLOTTIEFILES_FIELD_SOURCE_LABEL"
+							default="file"
+							>
+							<option value="file">MOD_PANKYLOTTIEFILES_FIELD_SOURCE_FILE</option>
+							<option value="url">MOD_PANKYLOTTIEFILES_FIELD_SOURCE_URL</option>
+						</field>
+
+						<field
+							name="file"
+							type="media"
+							label="MOD_PANKYLOTTIEFILES_FIELD_FILE_LABEL"
+							description="MOD_PANKYLOTTIEFILES_FIELD_FILE_DESC"
+							types="documents"
+							preview="false"
+							showon="source:file"
+						/>
+
+						<field
+							name="url"
+							type="url"
+							label="MOD_PANKYLOTTIEFILES_FIELD_URL_LABEL"
+							description="MOD_PANKYLOTTIEFILES_FIELD_URL_DESC"
+							relative="true"
+							validate="url"
+							showon="source:url"
+						/>
+
+						<field
+							name="decorative"
+							type="radio"
+							layout="joomla.form.field.radio.switcher"
+							label="MOD_PANKYLOTTIEFILES_FIELD_DECORATIVE_LABEL"
+							description="MOD_PANKYLOTTIEFILES_FIELD_DECORATIVE_DESC"
+							default="0"
+							filter="integer"
+							>
+							<option value="0">JNO</option>
+							<option value="1">JYES</option>
+						</field>
+
+						<field
+							name="alt"
+							type="text"
+							label="MOD_PANKYLOTTIEFILES_FIELD_ALT_LABEL"
+							description="MOD_PANKYLOTTIEFILES_FIELD_ALT_DESC"
+							showon="decorative:0"
+						/>
+
+						<field
+							name="link"
+							type="url"
+							label="MOD_PANKYLOTTIEFILES_FIELD_LINK_LABEL"
+							description="MOD_PANKYLOTTIEFILES_FIELD_LINK_DESC"
+							relative="true"
+							validate="url"
+						/>
+
+						<field
+							name="link_target"
+							type="list"
+							label="MOD_PANKYLOTTIEFILES_FIELD_LINK_TARGET_LABEL"
+							default=""
+							showon="link!:"
+							validate="options"
+							>
+							<option value="">MOD_PANKYLOTTIEFILES_FIELD_LINK_TARGET_SELF</option>
+							<option value="_blank">MOD_PANKYLOTTIEFILES_FIELD_LINK_TARGET_BLANK</option>
+						</field>
+
+						<field
+							name="segment_start"
+							type="number"
+							label="MOD_PANKYLOTTIEFILES_FIELD_SEGMENT_START_LABEL"
+							description="MOD_PANKYLOTTIEFILES_FIELD_SEGMENT_DESC"
+							min="0"
+						/>
+
+						<field
+							name="segment_end"
+							type="number"
+							label="MOD_PANKYLOTTIEFILES_FIELD_SEGMENT_END_LABEL"
+							description="MOD_PANKYLOTTIEFILES_FIELD_SEGMENT_DESC"
+							min="1"
+						/>
+
+						<field
+							name="marker"
+							type="text"
+							label="MOD_PANKYLOTTIEFILES_FIELD_MARKER_LABEL"
+							description="MOD_PANKYLOTTIEFILES_FIELD_MARKER_DESC"
+						/>
+
+						<field
+							name="theme"
+							type="text"
+							label="MOD_PANKYLOTTIEFILES_FIELD_THEME_LABEL"
+							description="MOD_PANKYLOTTIEFILES_FIELD_THEME_DESC"
+						/>
+					</form>
+				</field>
+
+				<field
+					name="prepare_content"
+					type="radio"
+					layout="joomla.form.field.radio.switcher"
+					label="MOD_PANKYLOTTIEFILES_FIELD_PREPARE_CONTENT_LABEL"
+					description="MOD_PANKYLOTTIEFILES_FIELD_PREPARE_CONTENT_DESC"
+					default="0"
+					filter="integer"
+					>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+			</fieldset>
+
+			<fieldset name="playback" label="MOD_PANKYLOTTIEFILES_FIELDSET_PLAYBACK">
+				<field
+					name="trigger"
+					type="list"
+					label="MOD_PANKYLOTTIEFILES_FIELD_TRIGGER_LABEL"
+					description="MOD_PANKYLOTTIEFILES_FIELD_TRIGGER_DESC"
+					default="autoplay"
+					validate="options"
+					>
+					<option value="autoplay">MOD_PANKYLOTTIEFILES_TRIGGER_AUTOPLAY</option>
+					<option value="viewport">MOD_PANKYLOTTIEFILES_TRIGGER_VIEWPORT</option>
+					<option value="hover">MOD_PANKYLOTTIEFILES_TRIGGER_HOVER</option>
+					<option value="click">MOD_PANKYLOTTIEFILES_TRIGGER_CLICK</option>
+					<option value="scroll">MOD_PANKYLOTTIEFILES_TRIGGER_SCROLL</option>
+				</field>
+
+				<field
+					name="hover_out"
+					type="list"
+					label="MOD_PANKYLOTTIEFILES_FIELD_HOVER_OUT_LABEL"
+					description="MOD_PANKYLOTTIEFILES_FIELD_HOVER_OUT_DESC"
+					default="stop"
+					showon="trigger:hover"
+					validate="options"
+					>
+					<option value="stop">MOD_PANKYLOTTIEFILES_HOVER_OUT_STOP</option>
+					<option value="pause">MOD_PANKYLOTTIEFILES_HOVER_OUT_PAUSE</option>
+					<option value="reverse">MOD_PANKYLOTTIEFILES_HOVER_OUT_REVERSE</option>
+				</field>
+
+				<field
+					name="loop"
+					type="radio"
+					layout="joomla.form.field.radio.switcher"
+					label="MOD_PANKYLOTTIEFILES_FIELD_LOOP_LABEL"
+					description="MOD_PANKYLOTTIEFILES_FIELD_LOOP_DESC"
+					default="1"
+					filter="integer"
+					showon="trigger!:scroll"
+					>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field
+					name="mode"
+					type="list"
+					label="MOD_PANKYLOTTIEFILES_FIELD_MODE_LABEL"
+					description="MOD_PANKYLOTTIEFILES_FIELD_MODE_DESC"
+					default="forward"
+					validate="options"
+					>
+					<option value="forward">MOD_PANKYLOTTIEFILES_MODE_FORWARD</option>
+					<option value="reverse">MOD_PANKYLOTTIEFILES_MODE_REVERSE</option>
+					<option value="bounce">MOD_PANKYLOTTIEFILES_MODE_BOUNCE</option>
+					<option value="reverse-bounce">MOD_PANKYLOTTIEFILES_MODE_REVERSE_BOUNCE</option>
+				</field>
+
+				<field
+					name="speed"
+					type="number"
+					label="MOD_PANKYLOTTIEFILES_FIELD_SPEED_LABEL"
+					description="MOD_PANKYLOTTIEFILES_FIELD_SPEED_DESC"
+					default="1"
+					min="0.1"
+					max="10"
+					step="0.1"
+					filter="float"
+				/>
+
+				<field
+					name="controls"
+					type="radio"
+					layout="joomla.form.field.radio.switcher"
+					label="MOD_PANKYLOTTIEFILES_FIELD_CONTROLS_LABEL"
+					description="MOD_PANKYLOTTIEFILES_FIELD_CONTROLS_DESC"
+					default="1"
+					filter="integer"
+					showon="trigger!:click[AND]trigger!:scroll"
+					>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field
+					name="reduced_motion"
+					type="radio"
+					layout="joomla.form.field.radio.switcher"
+					label="MOD_PANKYLOTTIEFILES_FIELD_REDUCED_MOTION_LABEL"
+					description="MOD_PANKYLOTTIEFILES_FIELD_REDUCED_MOTION_DESC"
+					default="1"
+					filter="integer"
+					>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+			</fieldset>
+
+			<fieldset name="appearance" label="MOD_PANKYLOTTIEFILES_FIELDSET_APPEARANCE">
+				<field
+					name="display"
+					type="list"
+					label="MOD_PANKYLOTTIEFILES_FIELD_DISPLAY_LABEL"
+					description="MOD_PANKYLOTTIEFILES_FIELD_DISPLAY_DESC"
+					default="stack"
+					validate="options"
+					>
+					<option value="stack">MOD_PANKYLOTTIEFILES_DISPLAY_STACK</option>
+					<option value="grid">MOD_PANKYLOTTIEFILES_DISPLAY_GRID</option>
+					<option value="slider">MOD_PANKYLOTTIEFILES_DISPLAY_SLIDER</option>
+				</field>
+
+				<field
+					name="columns"
+					type="number"
+					label="MOD_PANKYLOTTIEFILES_FIELD_COLUMNS_LABEL"
+					description="MOD_PANKYLOTTIEFILES_FIELD_COLUMNS_DESC"
+					default="3"
+					min="1"
+					max="12"
+					filter="integer"
+					showon="display!:stack"
+				/>
+
+				<field
+					name="width"
+					type="text"
+					label="MOD_PANKYLOTTIEFILES_FIELD_WIDTH_LABEL"
+					description="MOD_PANKYLOTTIEFILES_FIELD_WIDTH_DESC"
+					default="300px"
+					showon="display:stack"
+				/>
+
+				<field
+					name="aspect_ratio"
+					type="text"
+					label="MOD_PANKYLOTTIEFILES_FIELD_ASPECT_RATIO_LABEL"
+					description="MOD_PANKYLOTTIEFILES_FIELD_ASPECT_RATIO_DESC"
+					default="1/1"
+					hint="16/9"
+				/>
+
+				<field
+					name="height"
+					type="text"
+					label="MOD_PANKYLOTTIEFILES_FIELD_HEIGHT_LABEL"
+					description="MOD_PANKYLOTTIEFILES_FIELD_HEIGHT_DESC"
+					default="300px"
+					showon="aspect_ratio:"
+				/>
+
+				<field
+					name="fit"
+					type="list"
+					label="MOD_PANKYLOTTIEFILES_FIELD_FIT_LABEL"
+					description="MOD_PANKYLOTTIEFILES_FIELD_FIT_DESC"
+					default="contain"
+					validate="options"
+					>
+					<option value="contain">MOD_PANKYLOTTIEFILES_FIT_CONTAIN</option>
+					<option value="cover">MOD_PANKYLOTTIEFILES_FIT_COVER</option>
+					<option value="fill">MOD_PANKYLOTTIEFILES_FIT_FILL</option>
+					<option value="fit-width">MOD_PANKYLOTTIEFILES_FIT_WIDTH</option>
+					<option value="fit-height">MOD_PANKYLOTTIEFILES_FIT_HEIGHT</option>
+					<option value="none">MOD_PANKYLOTTIEFILES_FIT_NONE</option>
+				</field>
+
+				<field
+					name="backgroundcolor"
+					type="color"
+					label="MOD_PANKYLOTTIEFILES_FIELD_BACKGROUNDCOLOR_LABEL"
+					description="MOD_PANKYLOTTIEFILES_FIELD_BACKGROUNDCOLOR_DESC"
+					default=""
+				/>
+			</fieldset>
+
+			<fieldset name="advanced">
+				<field
+					name="layout"
+					type="modulelayout"
+					label="JFIELD_ALT_LAYOUT_LABEL"
+					class="form-select"
+					validate="moduleLayout"
+				/>
+
+				<field
+					name="moduleclass_sfx"
+					type="textarea"
+					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+					rows="3"
+					validate="CssIdentifier"
+				/>
+
+				<field
+					name="cache"
+					type="list"
+					label="COM_MODULES_FIELD_CACHING_LABEL"
+					default="1"
+					filter="integer"
+					validate="options"
+					>
+					<option value="1">JGLOBAL_USE_GLOBAL</option>
+					<option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+
+				<field
+					name="cache_time"
+					type="number"
+					label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+					default="900"
+					filter="integer"
+				/>
+
+				<field
+					name="cachemode"
+					type="hidden"
+					default="static"
+					>
+					<option value="static"></option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" group="content" method="upgrade">
+	<name>plg_content_pankylottie</name>
+	<author>Panayiotis Kiriakopoulos</author>
+	<creationDate>2026-10</creationDate>
+	<copyright>(C) 2022 Panayiotis Kiriakopoulos.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>kiriakopoulos_p@hotmail.com</authorEmail>
+	<authorUrl>https://github.com/pnkr</authorUrl>
+	<version>2.0.0</version>
+	<description>PLG_CONTENT_PANKYLOTTIE_XML_DESCRIPTION</description>
+	<namespace path="src">Pnkr\Plugin\Content\PankyLottie</namespace>
+
+	<files>
+		<folder plugin="pankylottie">services</folder>
+		<folder>language</folder>
+		<folder>src</folder>
+	</files>
+
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field
+					name="trigger"
+					type="list"
+					label="PLG_CONTENT_PANKYLOTTIE_FIELD_TRIGGER_LABEL"
+					default="viewport"
+					validate="options"
+					>
+					<option value="autoplay">PLG_CONTENT_PANKYLOTTIE_TRIGGER_AUTOPLAY</option>
+					<option value="viewport">PLG_CONTENT_PANKYLOTTIE_TRIGGER_VIEWPORT</option>
+					<option value="hover">PLG_CONTENT_PANKYLOTTIE_TRIGGER_HOVER</option>
+					<option value="click">PLG_CONTENT_PANKYLOTTIE_TRIGGER_CLICK</option>
+					<option value="scroll">PLG_CONTENT_PANKYLOTTIE_TRIGGER_SCROLL</option>
+				</field>
+
+				<field
+					name="loop"
+					type="radio"
+					layout="joomla.form.field.radio.switcher"
+					label="PLG_CONTENT_PANKYLOTTIE_FIELD_LOOP_LABEL"
+					default="1"
+					filter="integer"
+					>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field
+					name="controls"
+					type="radio"
+					layout="joomla.form.field.radio.switcher"
+					label="PLG_CONTENT_PANKYLOTTIE_FIELD_CONTROLS_LABEL"
+					default="1"
+					filter="integer"
+					>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field
+					name="reduced_motion"
+					type="radio"
+					layout="joomla.form.field.radio.switcher"
+					label="PLG_CONTENT_PANKYLOTTIE_FIELD_REDUCED_MOTION_LABEL"
+					default="1"
+					filter="integer"
+					>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field
+					name="width"
+					type="text"
+					label="PLG_CONTENT_PANKYLOTTIE_FIELD_WIDTH_LABEL"
+					default="100%"
+				/>
+
+				<field
+					name="aspect_ratio"
+					type="text"
+					label="PLG_CONTENT_PANKYLOTTIE_FIELD_ASPECT_RATIO_LABEL"
+					default="16/9"
+				/>
+
+				<field
+					name="fit"
+					type="list"
+					label="PLG_CONTENT_PANKYLOTTIE_FIELD_FIT_LABEL"
+					default="contain"
+					validate="options"
+					>
+					<option value="contain">PLG_CONTENT_PANKYLOTTIE_FIT_CONTAIN</option>
+					<option value="cover">PLG_CONTENT_PANKYLOTTIE_FIT_COVER</option>
+				</field>
+
+				<field
+					name="usage"
+					type="note"
+					label="PLG_CONTENT_PANKYLOTTIE_USAGE_LABEL"
+					description="PLG_CONTENT_PANKYLOTTIE_USAGE_DESC"
+				/>
+			</fieldset>
+		</fields>
+	</config>
+</extension>
