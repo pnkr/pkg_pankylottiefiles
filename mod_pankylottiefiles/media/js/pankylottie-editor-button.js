@@ -1,5 +1,5 @@
 /**
- * @package     Joomla.Administrator
+ * @package     Panky Lottie Files
  * @subpackage  mod_pankylottiefiles
  *
  * @copyright   (C) 2022 Panayiotis Kiriakopoulos. <https://github.com/pnkr>

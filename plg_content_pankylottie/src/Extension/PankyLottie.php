@@ -1,8 +1,8 @@
 <?php
 
 /**
- * @package     Joomla.Plugin
- * @subpackage  Content.pankylottie
+ * @package     Panky Lottie Files
+ * @subpackage  plg_content_pankylottie
  *
  * @copyright   (C) 2022 Panayiotis Kiriakopoulos. <https://github.com/pnkr>
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -26,6 +26,9 @@ final class PankyLottie extends CMSPlugin implements SubscriberInterface
 {
     /**
      * Tag attribute => player param.
+     *
+     * @var    array<string, string>
+     * @since  2.0.0
      */
     private const PLAYER_ATTRIBUTES = [
         'trigger'        => 'trigger',
@@ -44,6 +47,9 @@ final class PankyLottie extends CMSPlugin implements SubscriberInterface
 
     /**
      * Tag attribute => animation setting.
+     *
+     * @var    array<string, string>
+     * @since  2.0.0
      */
     private const ANIMATION_ATTRIBUTES = [
         'src'        => 'url',
@@ -55,6 +61,12 @@ final class PankyLottie extends CMSPlugin implements SubscriberInterface
         'theme'      => 'theme',
     ];
 
+    /**
+     * Tag attributes that take 1/0, true/false, yes/no or on/off.
+     *
+     * @var    string[]
+     * @since  2.0.0
+     */
     private const BOOLEAN_ATTRIBUTES = ['loop', 'controls', 'reduced-motion', 'decorative'];
 
     /**

@@ -1,8 +1,8 @@
 <?php
 
 /**
- * @package     Joomla.Plugin
- * @subpackage  Editors-xtd.pankylottie
+ * @package     Panky Lottie Files
+ * @subpackage  plg_editors-xtd_pankylottie
  *
  * @copyright   (C) 2022 Panayiotis Kiriakopoulos. <https://github.com/pnkr>
  * @license     GNU General Public License version 2 or later; see LICENSE.txt

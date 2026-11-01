@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @package     Joomla.Site
+ * @package     Panky Lottie Files
  * @subpackage  mod_pankylottiefiles
  *
  * @copyright   (C) 2022 Panayiotis Kiriakopoulos. <https://github.com/pnkr>
@@ -45,7 +45,7 @@ class LottiepreviewField extends FormField
         $wa->getRegistry()->addExtensionRegistryFile('mod_pankylottiefiles');
         $wa->useStyle('mod_pankylottiefiles.preview')->useScript('mod_pankylottiefiles.preview');
 
-        return '<div class="pankylottie-preview" id="' . $this->id . '" aria-live="polite"'
+        return '<div class="pankylottie-preview" id="' . htmlspecialchars($this->id, ENT_QUOTES, 'UTF-8') . '" aria-live="polite"'
             . ' data-control="' . htmlspecialchars($this->formControl . '[' . $this->group . ']', ENT_QUOTES, 'UTF-8') . '"'
             . ' data-root="' . htmlspecialchars(Uri::root(), ENT_QUOTES, 'UTF-8') . '"'
             . ' data-empty="' . htmlspecialchars(Text::_('MOD_PANKYLOTTIEFILES_PREVIEW_EMPTY'), ENT_QUOTES, 'UTF-8') . '"'

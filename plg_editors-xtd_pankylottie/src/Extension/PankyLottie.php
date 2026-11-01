@@ -1,8 +1,8 @@
 <?php
 
 /**
- * @package     Joomla.Plugin
- * @subpackage  Editors-xtd.pankylottie
+ * @package     Panky Lottie Files
+ * @subpackage  plg_editors-xtd_pankylottie
  *
  * @copyright   (C) 2022 Panayiotis Kiriakopoulos. <https://github.com/pnkr>
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -25,6 +25,12 @@ use Joomla\Event\SubscriberInterface;
  */
 final class PankyLottie extends CMSPlugin implements SubscriberInterface
 {
+    /**
+     * Language key suffixes (after PLG_EDITORS-XTD_PANKYLOTTIE_) used by the dialog script.
+     *
+     * @var    string[]
+     * @since  2.0.0
+     */
     private const SCRIPT_STRINGS = [
         'ALT', 'INSERT', 'LOOP', 'SRC', 'TITLE', 'TRIGGER',
         'TRIGGER_AUTOPLAY', 'TRIGGER_CLICK', 'TRIGGER_HOVER', 'TRIGGER_SCROLL', 'TRIGGER_VIEWPORT',
